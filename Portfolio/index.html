@@ -366,6 +366,7 @@ loop();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
       /* PPNeueMontreal-Book */
   @font-face {
@@ -1508,9 +1509,189 @@ loop();
     color: #999;
   }
 
+  /* Career action plan timeline */
+  .career-timeline {
+    position: relative;
+    width: min(100%, 1250px);
+    margin: 5rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .career-timeline::before {
+    content: '';
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    top: 50%;
+    height: 1px;
+    background: #3a3a3a;
+    transform: translateY(-50%);
+  }
+
+  .career-timeline-item {
+    position: relative;
+    min-width: 0;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .career-timeline-item:nth-child(odd) {
+    justify-content: flex-start;
+    padding-bottom: calc(50% + 2rem);
+  }
+
+  .career-timeline-item:nth-child(even) {
+    justify-content: flex-end;
+    padding-top: calc(50% + 2rem);
+  }
+
+  .career-timeline-card {
+    width: min(100%, 220px);
+    text-align: center;
+  }
+
+  .career-timeline-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0 auto 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #555;
+    border-radius: 50%;
+    color: #b5b5b5;
+    font-size: 0.9rem;
+  }
+
+  .career-timeline-step {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  .career-timeline-title {
+    margin: 0 0 0.7rem;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--white);
+  }
+
+  .career-timeline-text {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: #777;
+  }
+
+  .career-timeline-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #888;
+    border-radius: 50%;
+    background: #0d0d0d;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .career-timeline-item:nth-child(odd) .career-timeline-node::after,
+  .career-timeline-item:nth-child(even) .career-timeline-node::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 2rem;
+    background: #3a3a3a;
+    transform: translateX(-50%);
+  }
+
+  .career-timeline-item:nth-child(odd) .career-timeline-node::after {
+    bottom: 100%;
+  }
+
+  .career-timeline-item:nth-child(even) .career-timeline-node::after {
+    top: 100%;
+  }
+
   @media (max-width: 1024px) {
     .planning-section { padding: 5rem 2rem 6rem; }
     .university-layout { grid-template-columns: 1fr 0.7fr; gap: 2rem; }
+  }
+
+  @media (max-width: 767px) {
+    .career-timeline {
+      width: 100%;
+      margin-top: 3.5rem;
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 0 0 0 2.5rem;
+    }
+
+    .career-timeline::before {
+      top: 0;
+      bottom: 0;
+      left: 1rem;
+      right: auto;
+      width: 1px;
+      height: auto;
+      transform: none;
+    }
+
+    .career-timeline-item,
+    .career-timeline-item:nth-child(odd),
+    .career-timeline-item:nth-child(even) {
+      min-height: 0;
+      padding: 0 0 3rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .career-timeline-card {
+      width: 100%;
+      max-width: 38ch;
+      text-align: left;
+    }
+
+    .career-timeline-icon {
+      margin: 0 0 0.7rem;
+    }
+
+    .career-timeline-node {
+      top: 0.9rem;
+      left: -1.5rem;
+      width: 0.8rem;
+      height: 0.8rem;
+      transform: translate(-50%, -50%);
+    }
+
+    .career-timeline-item:nth-child(odd) .career-timeline-node::after,
+    .career-timeline-item:nth-child(even) .career-timeline-node::after {
+      display: none;
+    }
+
+    .career-timeline-title {
+      font-size: 1rem;
+    }
+
+    .career-timeline-text {
+      font-size: 0.82rem;
+    }
   }
 
   @media (max-width: 767px) {
@@ -1586,6 +1767,122 @@ loop();
     letter-spacing: -0.035em;
     color: var(--white);
     margin: 0 0 2.8rem;
+  }
+
+
+
+  /* ─── THEN / NOW / NEXT TIMELINE ─── */
+  .reflection-timeline {
+    position: relative;
+    width: min(100%, 1100px);
+    margin: 5.5rem auto 0;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
+  .reflection-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0.45rem;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: #303030;
+  }
+
+  .timeline-item {
+    position: relative;
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 1px solid #777;
+    border-radius: 50%;
+    background: #11100f;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  .timeline-heading {
+    margin: 0 0 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+
+  .timeline-body {
+    margin: 0 auto;
+    max-width: 42ch;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #858585;
+  }
+
+  .student-reflection {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid #3a3a3a;
+  }
+
+  .student-reflection-heading {
+    margin: 0 0 0.9rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--white);
+  }
+
+  @media (max-width: 767px) {
+    .reflection-timeline {
+      width: 100%;
+      margin-top: 4rem;
+      padding: 0;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .reflection-timeline::before {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+
+    .timeline-item {
+      padding: 2rem 1rem 0;
+    }
+
+    .timeline-dot {
+      top: 0;
+    }
+
+    .timeline-body {
+      max-width: 55ch;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .student-reflection {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+    }
   }
 
   /* Awards / Honors / Certificates */
@@ -1730,6 +2027,79 @@ loop();
   .activity-table th:nth-child(4),
   .activity-table td:nth-child(4) { width: 42%; }
 
+  /* Community Service */
+  .community-service-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .community-service-field {
+    min-width: 0;
+  }
+
+  .community-service-field.hours {
+    grid-column: span 1;
+  }
+
+  .community-service-field.role {
+    grid-column: span 1;
+  }
+
+  .community-service-label {
+    display: block;
+    margin: 0 0 0.5rem;
+    padding-left: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  .community-service-box {
+    min-height: 3.4rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #2a2a2a;
+    background: #11100f;
+    box-sizing: border-box;
+    font-family: var(--font-heading);
+    font-size: 0.99rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #858585;
+  }
+
+  .community-service-field.hours .community-service-box {
+    min-height: 3.4rem;
+  }
+
+  .community-service-field.role .community-service-box {
+    min-height: 3.4rem;
+  }
+
+  .community-service-field.contribution {
+    grid-column: 1 / -1;
+  }
+
+  .community-service-field.contribution .community-service-box {
+    min-height: 8.5rem;
+    padding: 1.1rem 1.2rem;
+  }
+
+  .community-service-box::after {
+    content: '';
+    display: block;
+    width: min(42%, 16rem);
+    margin-top: 1.8rem;
+    border-bottom: 1px solid #3a3a3a;
+  }
+
+  .community-service-field.contribution .community-service-box::after {
+    margin-top: 3.3rem;
+  }
+
   /* Academic Reflection — long-form editorial layout */
   .reflection-layout {
     max-width: 1000px;
@@ -1797,6 +2167,25 @@ loop();
       margin-top: 3rem;
       padding-top: 1.5rem;
     }
+
+    .community-service-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .community-service-label {
+      font-size: 0.62rem;
+    }
+
+    .community-service-box {
+      min-height: 3rem;
+      padding: 0.75rem;
+    }
+
+    .community-service-field.contribution .community-service-box {
+      min-height: 7rem;
+    }
+
 
     .reflection-quote {
       font-size: clamp(1.3rem, 6vw, 2rem);
@@ -3918,14 +4307,21 @@ loop();
             <div class="award-image-wrap">
               <img src="assets/awards/year9_2.jpg" alt="Award or certificate 5" />
             </div>
-            <span class="award-title">Title / Award</span>
+            <span class="award-title">Best Student Of The Month</span>
             <div class="award-meta"><span>Date: 04/09/2026</span><span>Year: 9</span></div>
           </article>
+
+
         </div>
 
         <div class="teacher-review">
           <h3 class="teacher-review-heading">Teacher's Review</h3>
           <p class="teacher-review-text">Teacher's Name: </p>
+
+          <div class="student-reflection">
+            <h4 class="student-reflection-heading">Student's Reflection</h4>
+            <p class="teacher-review-text">Student's Reflection: </p>
+          </div>
         </div>
       </section>
 
@@ -3951,6 +4347,39 @@ loop();
               <tr><td>Assembly 2026</td><td>Assembly Host</td><td>8</td><td>I had the honor of being the host of a school assembly, where I gave instructions for the national anthem and school pledge, as well as being the announcer for the montly Best Student Awards.</td></tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <!-- COMMUNITY SERVICE -->
+      <section class="portfolio-addition alt" id="community-service">
+        <p class="portfolio-addition-label">Experiences</p>
+        <h2 class="portfolio-addition-heading">Community Service</h2>
+
+        <div class="community-service-grid">
+          <div class="community-service-field">
+            <span class="community-service-label">Organization / Event</span>
+            <div class="community-service-box">Earthquake Fundraiser 2025</div>
+          </div>
+
+          <div class="community-service-field">
+            <span class="community-service-label">Dates</span>
+            <div class="community-service-box">29/03/2025 - 03/04/2025</div>
+          </div>
+
+          <div class="community-service-field hours">
+            <span class="community-service-label">Hours</span>
+            <div class="community-service-box">1-2</div>
+          </div>
+
+          <div class="community-service-field role">
+            <span class="community-service-label">My Role</span>
+            <div class="community-service-box">Accompanist (playing the background music on the piano) for the singers</div>
+          </div>
+
+          <div class="community-service-field contribution">
+            <span class="community-service-label">What I contributed</span>
+            <div class="community-service-box">I helped bring life to the singing show by playing the background music, while also raising a lot of money through our fundraiser to help with the damage caused by the earthquake.</div>
+          </div>
         </div>
       </section>
 
@@ -3980,6 +4409,54 @@ loop();
         <div class="teacher-review">
           <h3 class="teacher-review-heading">Teacher's Review</h3>
           <p class="teacher-review-text">Teacher's Name: </p>
+
+          <div class="student-reflection">
+            <h4 class="student-reflection-heading">Student's Reflection</h4>
+            <p class="teacher-review-text">Student's Reflection: </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- MY GROWTH -->
+      <section class="portfolio-addition" id="my-growth">
+        <p class="portfolio-addition-label">Growth</p>
+        <h2 class="portfolio-addition-heading">My Growth</h2>
+
+        <div class="reflection-timeline">
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <h3 class="timeline-heading">Then</h3>
+            <p class="timeline-body">
+              I used to struggle a lot with focusing, and the fact that I spent around 2–3 years attending online school didn't help. During that time, I constantly got distracted by things outside of the screen and often lost focus during class.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <h3 class="timeline-heading">Now</h3>
+            <p class="timeline-body">
+              After transferring back to campus school, I have definitely improved in terms of focus and productivity. However, I still sometimes catch myself talking about unrelated things in class, so there is still room for improvement.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <h3 class="timeline-heading">Next</h3>
+            <p class="timeline-body">
+              As my future gets closer and closer, I will definitely need to make better use of my time and focus more during lessons. If I want to get into a prestigious university or get a good education in general, I need to decrease the time I spend on unproductive activities and increase the time I spend studying.
+            </p>
+          </article>
+        </div>
+
+        <div class="teacher-review">
+          <h3 class="teacher-review-heading">Teacher's Review</h3>
+          <p class="teacher-review-text">Teacher's Name: </p>
+
+          <div class="student-reflection">
+            <h4 class="student-reflection-heading">Student's Reflection</h4>
+            <p class="teacher-review-text">Student's Reflection: </p>
+          </div>
         </div>
       </section>
 
@@ -4077,6 +4554,56 @@ loop();
         </div>
       </section>
 
+      <!-- CAREER EXPLORATION -->
+      <section class="planning-section" id="career-exploration">
+        <p class="planning-label">Future Planning</p>
+        <h2 class="planning-heading" data-heading="Career Exploration">
+          Career Exploration
+        </h2>
+        <p class="planning-intro">
+          Here, I will explore career paths I am interested in and what I should learn next to prepare for them.
+        </p>
+
+        <div class="career-path">
+          <article class="career-step">
+            <div class="career-step-number">01 / EXPLORE</div>
+            <h3 class="career-step-title">Career I’m Exploring</h3>
+            <p class="career-step-text">
+              Software Engineer / Developer<br>
+              AI/Machine Learning Engineer
+            </p>
+          </article>
+
+          <article class="career-step">
+            <div class="career-step-number">02 / Education</div>
+            <h3 class="career-step-title">Education Needed</h3>
+            <ul class="career-step-text" style="padding-left: 10px;">
+              <li>Bachelor's degree in Computer Science</li>
+              <li>Strong understanding of Mathematics and Computer Science</li>
+              <li>Knowledge of algorithms, data structures, and other important concepts</li>
+            </ul>
+          </article>
+
+          <article class="career-step">
+            <div class="career-step-number">03 / Skills</div>
+            <h3 class="career-step-title">Skills Needed</h3>
+            <ul class="career-step-text" style="padding-left: 10px;">
+              <li>Programming (Python, JavaScript, etc.)</li>
+              <li>Problem-solving and logical thinking</li>
+              <li>Web/software development</li>
+              <li>Machine learning fundamentals</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="career-reflection">
+          <div class="career-step-title">Career reflection</div>
+          <p class="career-reflection-text">
+            When Artificial Intelligence became very popular, around the time when ChatGPT was introduced, I really started to take interest into the world of AI. At a Year 9 level, I still have many things to learn about machine learning and AI in general, but in the future, I hope to pursue a career path like becoming an AI/Machine Learning Engineer. I will need to learn more about data structures, algorithms, data analysis, and machine learning in order to take the next step.
+          </p>
+        </div>
+      </section>
+      
       <!-- INTENDED UNIVERSITY -->
       <section class="planning-section alt" id="university">
         <p class="planning-label">University Planning</p>
@@ -4133,53 +4660,74 @@ loop();
         </div>
       </section>
 
-      <!-- CAREER EXPLORATION -->
-      <section class="planning-section" id="career-exploration">
-        <p class="planning-label">Future Planning</p>
-        <h2 class="planning-heading" data-heading="Career Exploration">
-          Career Exploration
-        </h2>
+      <!-- CAREER ACTION PLAN -->
+      <section class="planning-section" id="career-action-plan">
+        <p class="planning-label">Future Plan</p>
+        <h2 class="planning-heading">My College and Career Action Plan</h2>
         <p class="planning-intro">
-          Here, I will explore career paths I am interested in and what I should learn next to prepare for them.
+          A simple plan I'm planning on following for working towards a career in AI and machine learning.
         </p>
 
-        <div class="career-path">
-          <article class="career-step">
-            <div class="career-step-number">01 / EXPLORE</div>
-            <h3 class="career-step-title">Career I’m Exploring</h3>
-            <p class="career-step-text">
-              Software Engineer / Developer<br>
-              AI/Machine Learning Engineer
-            </p>
+        <div class="career-timeline">
+          <article class="career-timeline-item">
+            <div class="career-timeline-card">
+              <div class="career-timeline-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
+              <span class="career-timeline-step">Step 01</span>
+              <h3 class="career-timeline-title">Finish Year 9</h3>
+              <p class="career-timeline-text">
+                I'll have to keep my grades strong, especially in Mathematics and Computer Science, while also improving my study habits.
+              </p>
+            </div>
+            <span class="career-timeline-node" aria-hidden="true"></span>
           </article>
 
-          <article class="career-step">
-            <div class="career-step-number">02 / Education</div>
-            <h3 class="career-step-title">Education Needed</h3>
-            <ul class="career-step-text" style="padding-left: 10px;">
-              <li>Bachelor's degree in Computer Science</li>
-              <li>Strong understanding of Mathematics and Computer Science</li>
-              <li>Knowledge of algorithms, data structures, and other important concepts</li>
-            </ul>
+          <article class="career-timeline-item">
+            <div class="career-timeline-card">
+              <div class="career-timeline-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></div>
+              <span class="career-timeline-step">Step 02</span>
+              <h3 class="career-timeline-title">IGCSE</h3>
+              <p class="career-timeline-text">
+                I'll need to aim for strong IGCSE results while continuing to improve my programming and understanding of Machine Learning through school and self-learning.
+              </p>
+            </div>
+            <span class="career-timeline-node" aria-hidden="true"></span>
           </article>
 
-          <article class="career-step">
-            <div class="career-step-number">03 / Skills</div>
-            <h3 class="career-step-title">Skills Needed</h3>
-            <ul class="career-step-text" style="padding-left: 10px;">
-              <li>Programming (Python, JavaScript, etc.)</li>
-              <li>Problem-solving and logical thinking</li>
-              <li>Web/software development</li>
-              <li>Machine learning fundamentals</li>
-            </ul>
+          <article class="career-timeline-item">
+            <div class="career-timeline-card">
+              <div class="career-timeline-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
+              <span class="career-timeline-step">Step 03</span>
+              <h3 class="career-timeline-title">Polytechnic</h3>
+              <p class="career-timeline-text">
+                With help from my prior knowledge, I'll study a computing or technology diploma and gain more practical experience with programming, data, and AI while also building up my programming skills.
+              </p>
+            </div>
+            <span class="career-timeline-node" aria-hidden="true"></span>
           </article>
-        </div>
 
-        <div class="career-reflection">
-          <div class="career-step-title">Career reflection</div>
-          <p class="career-reflection-text">
-            When Artificial Intelligence became very popular, around the time when ChatGPT was introduced, I really started to take interest into the world of AI. At a Year 9 level, I still have many things to learn about machine learning and AI in general, but in the future, I hope to pursue a career path like becoming an AI/Machine Learning Engineer. I will need to learn more about data structures, algorithms, data analysis, and machine learning in order to take the next step.
-          </p>
+          <article class="career-timeline-item">
+            <div class="career-timeline-card">
+              <div class="career-timeline-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+              <span class="career-timeline-step">Step 04</span>
+              <h3 class="career-timeline-title">University (Study AI & Data Science)</h3>
+              <p class="career-timeline-text">
+                I will study a computing or AI-related degree, preferably at NTU, and get a better understanding of programming, data, and machine learning.
+              </p>
+            </div>
+            <span class="career-timeline-node" aria-hidden="true"></span>
+          </article>
+
+          <article class="career-timeline-item">
+            <div class="career-timeline-card">
+              <div class="career-timeline-icon"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></div>
+              <span class="career-timeline-step">Step 05</span>
+              <h3 class="career-timeline-title">Career - AI / ML Engineer</h3>
+              <p class="career-timeline-text">
+                Afterwards, I'll try to look for internships and jobs in AI or software, while continuing to build my skills towards becoming an AI / Machine Learning Engineer.
+              </p>
+            </div>
+            <span class="career-timeline-node" aria-hidden="true"></span>
+          </article>
         </div>
       </section>
 
