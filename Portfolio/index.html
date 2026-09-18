@@ -4314,15 +4314,7 @@ loop();
 
         </div>
 
-        <div class="teacher-review">
-          <h3 class="teacher-review-heading">Teacher's Review</h3>
-          <p class="teacher-review-text">Teacher's Name: </p>
 
-          <div class="student-reflection">
-            <h4 class="student-reflection-heading">Student's Reflection</h4>
-            <p class="teacher-review-text">Student's Reflection: </p>
-          </div>
-        </div>
       </section>
 
       <!-- ACTIVITIES & LEADERSHIP -->
@@ -4406,15 +4398,7 @@ loop();
           </p>
         </div>
 
-        <div class="teacher-review">
-          <h3 class="teacher-review-heading">Teacher's Review</h3>
-          <p class="teacher-review-text">Teacher's Name: </p>
 
-          <div class="student-reflection">
-            <h4 class="student-reflection-heading">Student's Reflection</h4>
-            <p class="teacher-review-text">Student's Reflection: </p>
-          </div>
-        </div>
       </section>
 
 
@@ -4449,15 +4433,7 @@ loop();
           </article>
         </div>
 
-        <div class="teacher-review">
-          <h3 class="teacher-review-heading">Teacher's Review</h3>
-          <p class="teacher-review-text">Teacher's Name: </p>
 
-          <div class="student-reflection">
-            <h4 class="student-reflection-heading">Student's Reflection</h4>
-            <p class="teacher-review-text">Student's Reflection: </p>
-          </div>
-        </div>
       </section>
 
 
@@ -4731,6 +4707,87 @@ loop();
         </div>
       </section>
 
+
+
+      <style>
+        /* ─── FINAL TEACHER REVIEWS ─── */
+        .final-review-list {
+          margin-top: 1rem;
+        }
+
+        .final-review-item {
+          padding: 3rem 0;
+          border-top: 1px solid #303030;
+        }
+
+        .final-review-item:first-child {
+          border-top: 0;
+          padding-top: 0;
+        }
+
+        .final-review-number {
+          display: block;
+          margin-bottom: 0.75rem;
+          font-family: var(--font-mono);
+          font-size: 0.68rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #666;
+        }
+
+        .final-review-heading {
+          margin: 0 0 0.9rem;
+          font-family: var(--font-heading);
+          font-size: clamp(1.25rem, 2vw, 1.8rem);
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          color: var(--white);
+        }
+
+        .final-review-text {
+          margin: 0;
+          font-family: var(--font-heading);
+          font-size: 0.99rem;
+          font-weight: bold;
+          line-height: 1.75;
+          color: #858585;
+        }
+        .final-review-text-p {
+          margin: 0;
+          font-family: var(--font-heading);
+          font-size: 0.99rem;
+          font-weight: 300;
+          line-height: 1.75;
+          color: #858585;
+        }
+
+        .final-review-response {
+          margin-top: 2rem;
+          padding-top: 1.75rem;
+          border-top: 1px solid #3a3a3a;
+        }
+
+        .final-review-response-heading {
+          margin: 0 0 0.9rem;
+          font-family: var(--font-heading);
+          font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+          font-weight: 500;
+          letter-spacing: -0.015em;
+          color: var(--white);
+        }
+
+        @media (max-width: 767px) {
+          .final-review-item {
+            padding: 2.5rem 0;
+          }
+
+          .final-review-text {
+            font-size: 0.88rem;
+            line-height: 1.7;
+          }
+        }
+      </style>
+
       <style>
         #final-reflection-text p {
           margin: 0 0 1.35rem;
@@ -4781,14 +4838,64 @@ loop();
           </div>
         </div>
         
-        <div class="teacher-review">
-          <h3 class="teacher-review-heading">Teacher's Review</h3>
-          <p class="teacher-review-text">Teacher's Name: </p>
 
-          <div class="student-reflection">
-            <h4 class="student-reflection-heading">Student's Reflection</h4>
-            <p class="teacher-review-text">Student's Reflection: </p>
-          </div>
+      </section>
+
+
+
+      <!-- FINAL TEACHER REVIEWS -->
+      <section class="portfolio-addition alt" id="teacher-reviews">
+        <p class="portfolio-addition-label">Feedback</p>
+        <h2 class="portfolio-addition-heading">Teachers' Reviews</h2>
+
+        <div class="final-review-list">
+          <article class="final-review-item">
+            <span class="final-review-number">Teacher 01</span>
+            <h3 class="final-review-heading">Teacher's Review</h3>
+            <p class="final-review-text">Teacher's Name: </p><span class="final-review-text-p">Swe Swe Aung</span>
+            <p class="final-review-text">Teacher's Review: </p><ul class="final-review-text-p"><li>Strengths - Aung Bhone Pyae Thaw is very good at presentation skills, collaborative skills, and critical thinking. He is flexible and active in class activities. He keeps his math skills throughout the whole three years.</li><li>Area to improve - He should practice extra worksheets and difficult problems if he understand easy and moderate problems. He should pay attention to the teacher said.</li><li>Recommended next steps: He is into computer science, so diving into maths will help you a big part of his future career. When it comes to maths, he needs to practice all problems and needs to study all text books rather than his only LB or course book. Practice makes you perfect.</li></ul>
+
+            <div class="final-review-response">
+              <h4 class="final-review-response-heading">Student's Reflection</h4>
+              <p class="final-review-text">Student's Reflection: <p class="final-review-text-p">I am very thankful for the positive things Teacher Swe Swe Aung has mentioned about me. For the areas to improve, I'll make sure to practice problems and learn new mathematical concepts when I can. I'm also thankful for the fact she acknowledges how I'm into computer science, and I also agree that Mathematics is very important for my future career so I need to make sure I practice it more than I do now.</p> </p>
+            </div>
+          </article>
+
+          <article class="final-review-item">
+            <span class="final-review-number">Teacher 02</span>
+            <h3 class="final-review-heading">Teacher's Review</h3>
+            <p class="final-review-text">Teacher's Name: </p>
+            <p class="final-review-text">Teacher's Review: </p>
+
+            <div class="final-review-response">
+              <h4 class="final-review-response-heading">Student's Reflection</h4>
+              <p class="final-review-text">Student's Reflection: </p>
+            </div>
+          </article>
+
+          <article class="final-review-item">
+            <span class="final-review-number">Teacher 03</span>
+            <h3 class="final-review-heading">Teacher's Review</h3>
+            <p class="final-review-text">Teacher's Name: </p>
+            <p class="final-review-text">Teacher's Review: </p>
+
+            <div class="final-review-response">
+              <h4 class="final-review-response-heading">Student's Reflection</h4>
+              <p class="final-review-text">Student's Reflection: </p>
+            </div>
+          </article>
+
+          <article class="final-review-item">
+            <span class="final-review-number">Teacher 04</span>
+            <h3 class="final-review-heading">Teacher's Review</h3>
+            <p class="final-review-text">Teacher's Name: </p>
+            <p class="final-review-text">Teacher's Review: </p>
+
+            <div class="final-review-response">
+              <h4 class="final-review-response-heading">Student's Reflection</h4>
+              <p class="final-review-text">Student's Reflection: </p>
+            </div>
+          </article>
         </div>
       </section>
 
